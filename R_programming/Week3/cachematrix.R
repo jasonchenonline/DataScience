@@ -13,7 +13,7 @@ makeCacheMatrix <- function(x = matrix()) {
   get <- function() x
   #set Inverse matrix
   setInverse <- function(data) {
-    m<<- data
+    m <<- solve(data)
     m
   }
   #Get Inverse matrix
@@ -34,9 +34,7 @@ cacheSolve <- function(x, ...) {
     message("return cached data")
     return(m)
   }
+  message("calculated data")
   data <- x$get() #get source matrix
-  #find the inverse, call makeCacheMatrix to calculate
-  m<- solve(data)
-  x$setInverse(m) #add to cache and return
-  m
+  x$setInverse(data) #Force calculate
 }
