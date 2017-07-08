@@ -1,8 +1,7 @@
-## Put comments here that give an overall description of what your
-## functions do
+## R function to calculate Inverse Matrix with result cached for time-consuming computations.
+## Result will be return if in the cache rather than recomputed.
 
-## Write a short comment describing this function
-
+## Function to calculate inverse Matrix.
 makeCacheMatrix <- function(x = matrix()) {
   #Set matrix, m is result matrix, x is source matrix
   m<- NULL
@@ -25,7 +24,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## The function calculates the inverse of the special "Matrix" created from above function.
+## It first try return from cache result. If not cache yet, it calculate the inverse matrix and
+## store cache result and return
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   m <- x$getInverse()
