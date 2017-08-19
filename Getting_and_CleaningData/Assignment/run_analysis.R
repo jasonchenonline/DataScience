@@ -66,10 +66,10 @@ names(Total) <- x
 write.table(Total, file = "Total.csv", sep = ",", qmethod = "double")
 
 #5 tidy data
-y<- x[c(1,2)]  #all column except SubjectId and Activity
+y<- x[-c(1,2)]  #all column except SubjectId and Activity
 tidy <- Total %>% 
   group_by( SubjectId, Activity) %>%
    summarise_each( funs(mean), y)
 write.table(tidy, file = "tidyTotal.txt", sep = " ", qmethod = "double", row.names = FALSE)
 
-tidyTotal <- setDT(read.table("tidyTotal.txt", sep=",", header = TRUE))
+#tidyTotal <- setDT(read.table("tidyTotal.txt", sep=",", header = TRUE))
